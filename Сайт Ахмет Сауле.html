@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Сауле Ахмет | Аудит и экспертиза фармацевтических производств</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F4F9FE;
+            color: #1A2C3C;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .header {
+            background: #0B2B3B;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .logo p {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+        .nav button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 4px 0;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            font-family: inherit;
+        }
+        .nav button:hover {
+            color: #47D7AC;
+        }
+        .nav button.active {
+            color: #47D7AC;
+            border-bottom-color: #47D7AC;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0B2B3B 0%, #124C64 100%);
+            color: white;
+            padding: 60px 0 48px;
+        }
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 2;
+        }
+        .hero-badge {
+            background: rgba(71, 215, 172, 0.2);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #47D7AC;
+        }
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .hero-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            border-left: 3px solid #47D7AC;
+            padding-left: 16px;
+        }
+        .hero-desc {
+            max-width: 90%;
+            margin-bottom: 28px;
+            opacity: 0.92;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #47D7AC;
+            color: #0B2B3B;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            color: white;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #3BC49B;
+        }
+        .hero-stats {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 24px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FFDD99;
+        }
+        .section-padding {
+            padding: 64px 0;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0E3B4B;
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #47D7AC;
+            border-radius: 4px;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+            transition: 0.25s;
+            border: 1px solid #E9F0F4;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+        }
+        .price-card {
+            text-align: center;
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            transition: 0.25s;
+            border: 1px solid #E9F0F4;
+        }
+        .price-card.featured {
+            border: 2px solid #47D7AC;
+            transform: scale(1.02);
+            box-shadow: 0 20px 30px -12px rgba(71,215,172,0.2);
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0B2B3B;
+            margin: 20px 0;
+        }
+        .price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+        .service-list {
+            text-align: left;
+            margin: 24px 0;
+            list-style: none;
+        }
+        .service-list li {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .service-list i {
+            color: #47D7AC;
+            width: 20px;
+        }
+        .responsibility-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .responsibility-card {
+            flex: 1;
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+        }
+        .responsibility-card:first-child {
+            background: #EFF5FA;
+        }
+        .responsibility-card:last-child {
+            background: #F8FAFE;
+            border: 1px solid #E2EDF2;
+        }
+        .doc-section {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            margin: 24px 0;
+        }
+        .doc-category {
+            margin-bottom: 32px;
+        }
+        .doc-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: #0E3B4B;
+            border-left: 4px solid #47D7AC;
+            padding-left: 16px;
+        }
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .doc-table th, .doc-table td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid #E9F0F4;
+            vertical-align: top;
+        }
+        .doc-table th {
+            background: #F4F9FE;
+            font-weight: 600;
+        }
+        .contact-form {
+            background: white;
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #DCE5EC;
+            border-radius: 20px;
+            font-family: inherit;
+            margin-bottom: 16px;
+        }
+        .footer {
+            background: #0B2B3B;
+            color: #BCD6E4;
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+        @media (max-width: 800px) {
+            .hero-text h1 { font-size: 2rem; }
+            .hero-content { flex-direction: column; }
+            .nav button { font-size: 0.85rem; }
+            .doc-table th, .doc-table td { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">
+            <h1>Сауле Ахмет</h1>
+            <p>Аудит · Экспертиза · Обучение · Координация</p>
+        </div>
+        <div class="nav">
+            <button class="active" data-tab="tab-services">Услуги</button>
+            <button data-tab="tab-packages">Пакеты</button>
+            <button data-tab="tab-about">Обо мне</button>
+            <button data-tab="tab-responsibility">Зоны</button>
+            <button data-tab="tab-documents">Документы</button>
+            <button data-tab="tab-contact">Контакты</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">Лицензия ДКМФК №KZ25000751715</div>
+            <h1>Аудит и экспертное сопровождение<br>фармацевтических производств</h1>
+            <div class="hero-title">Аудит · Обучение сотрудников · Координация валидации · Подготовка к проверкам</div>
+            <div class="hero-desc">
+                Я не пишу документы за вас. Я провожу аудит, обучаю ваших сотрудников самостоятельно разрабатывать и поддерживать документацию в соответствии с актуальными требованиями МЗ РК и международных стандартов. Координирую валидацию и готовлю предприятие к проверкам госорганов.
+            </div>
+            <a href="#contact" class="btn"><i class="fas fa-calendar-check"></i> Выбрать пакет</a>
+            <a href="#contact" class="btn btn-outline" style="margin-left: 16px;"><i class="fas fa-phone-alt"></i> Связаться</a>
+        </div>
+        <div class="hero-stats">
+            <div><span class="stat-number">17+</span><br>лет в фармацевтике</div>
+            <div style="margin: 20px 0;"><span class="stat-number">5+</span><br>клинических исследований</div>
+            <div><span class="stat-number">120+</span><br>сотрудников в управлении</div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- ВКЛАДКА: УСЛУГИ -->
+    <div id="tab-services" class="tab-content active section-padding">
+        <h2 class="section-title">Как я могу быть полезен вашему производству</h2>
+        <div class="grid-2">
+            <div class="card"><i class="fas fa-search" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Провожу аудит системы качества</h3><p>Анализирую текущую документацию, процессы и оборудование на соответствие требованиям МЗ РК и международных стандартов. Выявляю риски и даю дорожную карту исправлений.</p></div>
+            <div class="card"><i class="fas fa-chalkboard-user" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Обучаю сотрудников разработке документации</h3><p>Провожу обучение вашей команды: как самим разрабатывать, актуализировать и поддерживать СОПы, технологические инструкции и регламенты. После обучения проверяю и утверждаю результат.</p></div>
+            <div class="card"><i class="fas fa-chart-line" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Координирую валидацию (IQ/OQ/PQ)</h3><p>Сама валидация выполняется сторонними организациями (стоимость от 3 000 000 ₸). Я координирую области валидации, согласовываю требования МЗ РК и международных стандартов, определяю допустимые пределы и проверяю протоколы.</p></div>
+            <div class="card"><i class="fas fa-file-signature" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Готовлю досье для подачи в госорганы</h3><p>Ваша команда готовит сканы и черновики после моего утверждения всех документов. Я формирую досье, при необходимости сама подаю через elicense или НЦЭЛС.</p></div>
+            <div class="card"><i class="fas fa-shield-alt" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Готовлю к проверкам и аудитам</h3><p>При комплексных проверках (КНМ) госорганов или аудитах (ISO, GMP) — готовлю предприятие, устраняю несоответствия, при необходимости официально вхожу в штат на время проверки.</p></div>
+            <div class="card"><i class="fas fa-handshake" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Подбираю и сопровождаю подрядчиков</h3><p>Валидация, лабораторные анализы, сертификация ISO — рекомендую проверенных подрядчиков, ставлю им задачи и контролирую качество их работы.</p></div>
+        </div>
+    </div>
+
+    <!-- ВКЛАДКА: ПАКЕТЫ -->
+    <div id="tab-packages" class="tab-content section-padding">
+        <h2 class="section-title">Пакеты услуг (цены — ориентировочные)</h2>
+        <p style="text-align: center; margin-bottom: 40px; background: #EFF5FA; padding: 12px 24px; border-radius: 60px; display: inline-block; width: auto; margin-left: auto; margin-right: auto;"><i class="fas fa-calculator"></i> Стоимость рассчитывается индивидуально под сложность задач, объём документации и сроки. Указанные цены — ориентир для старта переговоров.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 32px;">
+            <div class="price-card"><i class="fas fa-file-alt" style="font-size: 2.5rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Аудит и дорожная карта</h3><div class="price">от 350 000 ₸</div>
+                <ul class="service-list"><li><i class="fas fa-check-circle"></i> Полный аудит документации и процессов</li><li><i class="fas fa-check-circle"></i> Дорожная карта с этапами и приоритетами</li><li><i class="fas fa-check-circle"></i> Чек-лист несоответствий и рекомендации</li><li><i class="fas fa-check-circle"></i> 2 часа консультаций по результатам</li></ul>
+                <a href="#contact" class="btn" style="width: 100%; justify-content: center;">Узнать цену для вашего проекта</a>
+            </div>
+            <div class="price-card featured"><i class="fas fa-star" style="font-size: 2.5rem; color:#FFC107;"></i><h3 style="margin: 16px 0;">Обучение + координация</h3><div class="price">от 1 500 000 ₸</div>
+                <ul class="service-list"><li><i class="fas fa-check-circle"></i> Всё из пакета «Аудит»</li><li><i class="fas fa-check-circle"></i> Обучение сотрудников разработке СОПов (до 30 документов, 2 месяца сопровождения)</li><li><i class="fas fa-check-circle"></i> Проверка и утверждение каждого документа после обучения</li><li><i class="fas fa-check-circle"></i> Координация валидации (требования, пределы, проверка протоколов)</li><li><i class="fas fa-check-circle"></i> Подготовка досье для госорганов + подача (при необходимости)</li><li><i class="fas fa-check-circle"></i> 5 часов консультаций + подготовка к проверкам</li></ul>
+                <a href="#contact" class="btn" style="width: 100%; justify-content: center;">Узнать цену для вашего проекта</a>
+            </div>
+            <div class="price-card"><i class="fas fa-crown" style="font-size: 2.5rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Полное сопровождение</h3><div class="price">от 2 500 000 ₸</div>
+                <ul class="service-list"><li><i class="fas fa-check-circle"></i> Всё из пакета «Обучение + координация»</li><li><i class="fas fa-check-circle"></i> Поиск и привлечение подрядчиков (валидация, лаборатории)</li><li><i class="fas fa-check-circle"></i> Полная координация всех технических работ</li><li><i class="fas fa-check-circle"></i> Официальное участие в комплексных проверках (КНМ) госорганов — временное включение в штат</li><li><i class="fas fa-check-circle"></i> Сводный отчёт и закрытие всех замечаний</li><li><i class="fas fa-check-circle"></i> 15 часов консультаций</li></ul>
+                <a href="#contact" class="btn" style="width: 100%; justify-content: center;">Узнать цену для вашего проекта</a>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 28px; font-size: 0.85rem; color: #5A7A8C;"><i class="fas fa-info-circle"></i> Госпошлины, экспертизы и оплата сторонних подрядчиков (включая валидацию от 3 000 000 ₸) оплачиваются клиентом отдельно. Работа по договору, полная юридическая чистота.</p>
+    </div>
+
+    <!-- ВКЛАДКА: ОБО МНЕ -->
+    <div id="tab-about" class="tab-content section-padding">
+        <h2 class="section-title">Почему я?</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 24px;">
+            <div style="flex: 1; background: white; border-radius: 28px; padding: 28px;">
+                <i class="fas fa-id-card" style="font-size: 2rem; color:#47D7AC;"></i>
+                <h3 style="margin: 16px 0;">Государственные лицензии</h3>
+                <p><strong>Лицензия ДКМФК №KZ25000751715</strong><br>Специалист в сфере обращения лекарственных средств и медицинских изделий</p>
+                <p><strong>Лицензия ВШОЗ №KZ25000384682</strong><br>Повышение квалификации, сертификационные курсы кадров отрасли здравоохранения</p>
+            </div>
+            <div style="flex: 1; background: white; border-radius: 28px; padding: 28px;">
+                <i class="fas fa-briefcase" style="font-size: 2rem; color:#47D7AC;"></i>
+                <h3 style="margin: 16px 0;">Ключевой опыт</h3>
+                <ul style="margin-left: 20px;">
+                    <li>Заместитель генерального директора по качеству на крупном производстве концентратов для гемодиализа</li>
+                    <li>Исполнительный директор на предприятии с численностью персонала 400 человек (медицинские изделия)</li>
+                    <li>Заместитель генерального директора по качеству и производству на заводе инфузионных и инъекционных растворов</li>
+                    <li>Легализация продукции, устранение ошибок в лицензиях и регистрационных удостоверениях</li>
+                    <li>Оцифровка процессов контроля качества (QC/QA), внедрение цифровых инструментов для прослеживаемости сырья</li>
+                    <li>Успешное прохождение проверок ДКМФК, санэпидслужбы и аудитов ISO 13485:2016</li>
+                </ul>
+            </div>
+            <div style="flex: 1; background: white; border-radius: 28px; padding: 28px;">
+                <i class="fas fa-magic" style="font-size: 2rem; color:#47D7AC;"></i>
+                <h3 style="margin: 16px 0;">Вайб-кодинг — цифровая автоматизация</h3>
+                <p>Быстрое прототипирование внутренних инструментов: калькуляторы расхода сырья, дашборды KPI, автоматизация отчётности без найма IT-отдела. Сокращаю время на рутину на 30–40%.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ВКЛАДКА: ЗОНЫ ОТВЕТСТВЕННОСТИ -->
+    <div id="tab-responsibility" class="tab-content section-padding">
+        <h2 class="section-title">Распределение ответственности</h2>
+        <div class="responsibility-grid">
+            <div class="responsibility-card"><i class="fas fa-check-circle" style="font-size: 2rem; color:#47D7AC;"></i><h3 style="margin: 16px 0;">Что делаю я</h3>
+                <ul style="margin-left: 20px;"><li>✅ Провожу аудит системы качества</li><li>✅ Обучаю сотрудников разработке документации (СОПы, инструкции)</li><li>✅ Утверждаю финальные версии документов после обучения</li><li>✅ Координирую валидацию: требования МЗ РК, допустимые пределы, проверка протоколов</li><li>✅ Готовлю досье для подачи в госорганы (сама подаю при необходимости)</li><li>✅ Готовлю к проверкам и официально участвую при КНМ (вхожу в штат на время проверки)</li></ul>
+            </div>
+            <div class="responsibility-card"><i class="fas fa-user-cog" style="font-size: 2rem; color:#D9534F;"></i><h3 style="margin: 16px 0;">Выполняет Заказчик</h3>
+                <ul style="margin-left: 20px;"><li>📄 Готовит черновики документов после моего обучения</li><li>📤 Подаёт отсканированные документы после моего утверждения</li><li>💰 Оплачивает госпошлины, экспертизы и работы сторонних подрядчиков (валидация ≈3 млн ₸, лаборатории, орган по сертификации)</li><li>🔧 Организует доступ на объект для аудита и валидации</li><li>📑 Заключает прямые договоры с подрядчиками (я рекомендую)</li><li>🏭 Выполняет физические работы (демонтаж, монтаж — если применимо)</li></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ВКЛАДКА: ДОКУМЕНТЫ -->
+    <div id="tab-documents" class="tab-content section-padding">
+        <h2 class="section-title">Что мне нужно от вас для старта</h2>
+        <p style="margin-bottom: 24px;">Пожалуйста, предоставьте следующие документы. Если каких-то нет — мы вместе решим, как их получить или подготовить.</p>
+        <div class="doc-section">
+            <div class="doc-category"><h3>📌 1. Общая информация</h3>
+                <table class="doc-table"><tr><th style="width: 40%;">Документ / Данные</th><th>Примечание</th></tr>
+                <tr><td>Наименование ТОО, БИН, адреса (юридический и фактический)</td><td>Для понимания контекста</td></tr>
+                <tr><td>Описание продукции (медицинские изделия, лекарственные средства)</td><td>Класс риска, номенклатура</td></tr>
+                <tr><td>Действующие регистрационные удостоверения (если есть)</td><td>Для продукции, которая уже зарегистрирована</td></tr>
+            </table></div>
+            <div class="doc-category"><h3>🏭 2. Производственная площадка</h3>
+                <table class="doc-table"><tr><th style="width: 40%;">Документ</th><th>Кто готовит</th></tr>
+                <tr><td>Поэтажный план помещений с зонированием</td><td>Клиент (инженер) — чертёж или схема</td></tr>
+                <tr><td>Технологическая схема производства</td><td>Клиент (технолог) — схематично</td></tr>
+                <tr><td>Перечень оборудования (название, модель, назначение)</td><td>Клиент — Excel или Word</td></tr>
+            </table></div>
+            <div class="doc-category"><h3>📚 3. Документы системы менеджмента качества</h3>
+                <table class="doc-table"><tr><th style="width: 40%;">Документ</th><th>Примечание</th></tr>
+                <tr><td>Реестр действующих СОПов</td><td>Excel или Word — чтобы я понимал объём работы</td></tr>
+                <tr><td>Сами СОПы (в Word, если требуется актуализация)</td><td>Только те, которые нужно доработать</td></tr>
+                <tr><td>Сертификат ISO 13485:2016 (если есть)</td><td>Для информации</td></tr>
+            </table></div>
+            <div class="doc-category"><h3>👥 4. Контакты для координации</h3>
+                <table class="doc-table"><tr><th>Роль</th><th>ФИО, телефон, email</th></tr>
+                <tr><td>Руководитель (принимает решения)</td><td></td></tr>
+                <tr><td>Технический специалист / инженер</td><td></td></tr>
+                <tr><td>Сотрудник, ответственный за документы</td><td></td></tr>
+            </table></div>
+        </div>
+        <p style="background: #EFF5FA; padding: 16px; border-radius: 20px;"><i class="fas fa-envelope"></i> Присылайте файлы на akhmetsaule4@gmail.com или через форму ниже. Перерегистрацию ТОО (смену юридического адреса) вы делаете самостоятельно через ЦОН — это 1 рабочий день, я в этом не участвую.</p>
+    </div>
+
+    <!-- ВКЛАДКА: КОНТАКТЫ -->
+    <div id="tab-contact" class="tab-content section-padding">
+        <h2 class="section-title">Связаться со мной</h2>
+        <div class="contact-form">
+            <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+                <div style="flex: 1;">
+                    <p><i class="fas fa-phone-alt" style="color:#47D7AC;"></i> <strong>Телефон / WhatsApp:</strong> +7 777 7717707</p>
+                    <p><i class="fas fa-envelope" style="color:#47D7AC;"></i> <strong>Email:</strong> akhmetsaule4@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt" style="color:#47D7AC;"></i> Алматы, Казахстан</p>
+                    <hr style="margin: 20px 0;">
+                    <p>Работа по договору, оплата по безналу, полная юридическая чистота</p>
+                </div>
+                <div style="flex: 1;">
+                    <form action="https://formspree.io/f/xgvorgkl" method="POST">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="tel" name="phone" placeholder="Телефон">
+                        <textarea name="message" rows="4" placeholder="Опишите вашу задачу: аудит, обучение сотрудников, координация валидации, подготовка к проверке, новое производство, перенос площадки..."></textarea>
+                        <button type="submit" class="btn" style="width: 100%; justify-content: center;"><i class="fas fa-paper-plane"></i> Отправить запрос</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>Сауле Ахмет | Лицензия ДКМФК №KZ25000751715 | Лицензия ВШОЗ №KZ25000384682</p>
+        <p style="margin-top: 12px; font-size: 0.8rem;">Аудит · Обучение сотрудников · Координация валидации · Подготовка к проверкам · Официальное участие при КНМ (комплексных проверках)</p>
+        <p style="margin-top: 16px;">© 2026</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.nav button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const tabId = this.dataset.tab;
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
