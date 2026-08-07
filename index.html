@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="google-site-verification" content="google9393f9f155f370ba" />
   <title>Сауле Ахмет | Стратегическое управление фармпроизводством</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
@@ -24,7 +25,6 @@
       padding: 0 24px;
     }
 
-    /* Header */
     .header {
       background: linear-gradient(135deg, #0b2b3b, #124c64);
       color: #fff;
@@ -84,7 +84,6 @@
       border-color: #47d7ac;
     }
 
-    /* Pages */
     .page {
       display: none;
       padding: 48px 0 64px;
@@ -97,6 +96,25 @@
       0% { opacity: 0; transform: translateY(12px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
+    /* ===== PDF-режим ===== */
+    .pdf-mode .page {
+      display: block !important;
+      animation: none !important;
+      opacity: 1 !important;
+      padding: 24px 0 32px !important;
+      page-break-after: always;
+    }
+    .pdf-mode .page:last-child {
+      page-break-after: avoid;
+    }
+    .pdf-mode .nav a:not(.pdf-btn) {
+      display: none;
+    }
+    .pdf-mode .header {
+      position: static !important;
+    }
+
     .page-title {
       font-size: 2.2rem;
       font-weight: 800;
@@ -113,7 +131,6 @@
       margin-top: 8px;
     }
 
-    /* Cards */
     .grid-2col {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -157,7 +174,6 @@
       margin: 4px 4px 0 0;
     }
 
-    /* Experience */
     .exp-item {
       margin-bottom: 32px;
       border-left: 3px solid #47d7ac;
@@ -194,7 +210,6 @@
       margin-bottom: 4px;
     }
 
-    /* Vibe cards */
     .vibe-card {
       background: #fff;
       border-radius: 20px;
@@ -215,7 +230,6 @@
       font-size: 0.9rem;
     }
 
-    /* Contact */
     .contact-card {
       background: #fff;
       border-radius: 28px;
@@ -309,17 +323,23 @@
       margin-right: 8px;
     }
 
+    /* ===== СКРЫТОЕ АВТОСООБЩЕНИЕ ===== */
     .auto-message-preview {
-      background: #f0f9f5;
+      background: #d4edda;
       border-radius: 16px;
       padding: 16px 20px;
       margin: 16px 0;
-      border-left: 4px solid #47d7ac;
+      border-left: 4px solid #28a745;
       font-size: 0.95rem;
-      color: #0e4d5e;
+      color: #155724;
+      display: none;
+      animation: fadeIn 0.4s ease;
     }
     .auto-message-preview strong {
       color: #0b2b3b;
+    }
+    .auto-message-preview.show {
+      display: block;
     }
 
     .site-link-box {
@@ -348,7 +368,6 @@
       font-size: 1.2rem;
     }
 
-    /* New: Achievement highlight */
     .achievement-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -417,9 +436,9 @@
 
 <div id="toast" class="toast">✅ Скопировано!</div>
 
-<div class="container">
+<div class="container" id="pdfContent">
 
-  <!-- ==================== HOME ==================== -->
+  <!-- ===== HOME ===== -->
   <section class="page active" id="page-home">
     <div style="display:flex; flex-wrap:wrap; gap:40px; align-items:center; margin-bottom:40px;">
       <div style="flex:2;">
@@ -429,20 +448,22 @@
         <h1 style="font-size:2.8rem; font-weight:800; margin:16px 0 8px; color:#0e3b4b;">Сауле Ахмет</h1>
         <p style="font-size:1.2rem; font-weight:500; color:#2c6e8a;">Директор / Заместитель генерального директора по качеству</p>
         <p style="margin-top:16px; font-size:1.05rem; color:#2c4253;">
-          Более 17 лет в фармацевтике. Внедряю «прозрачное» производство через авторские IT-решения. 
+          Более 17 лет в фармацевтике. Внедряю «прозрачное» производство через авторские IT-решения.
           Перевожу предприятия из режима «исправления ошибок» в проактивное предотвращение отклонений.
         </p>
         <div style="margin-top:12px;">
           <span class="hours-badge"><i class="far fa-clock"></i> Отвечаю с 8:00 до 20:00</span>
         </div>
 
-        <div class="auto-message-preview">
-          <strong><i class="fas fa-comment-dots"></i> Автоматическое сообщение:</strong><br>
+        <!-- ===== СКРЫТОЕ АВТОСООБЩЕНИЕ (появляется после клика) ===== -->
+        <div class="auto-message-preview" id="autoMessage">
+          <strong><i class="fas fa-check-circle" style="color:#28a745;"></i> Автосообщение отправлено:</strong><br>
           «Здравствуйте! Благодарю за отклик, опишите сферу деятельности (ЛС, МИ) Стерильное / нестерильное. На какую позицию Вам необходим специалист? Наберу в течение часа. Сауле.»
         </div>
 
         <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px;">
-          <a href="https://wa.me/77777717707?text=Здравствуйте!%20Благодарю%20за%20отклик%2C%20опишите%20сферу%20деятельности%20(ЛС%2C%20МИ)%20Стерильное%20%2F%20нестерильное.%20На%20какую%20позицию%20Вам%20необходим%20специалист%3F%20Наберу%20в%20течение%20часа.%20Сауле." target="_blank" class="btn-whatsapp" style="padding:12px 28px; font-size:1rem;">
+          <!-- ===== КНОПКА WHATSAPP С ПОКАЗОМ АВТОСООБЩЕНИЯ ===== -->
+          <a href="https://wa.me/77777717707?text=Здравствуйте!%20Благодарю%20за%20отклик%2C%20опишите%20сферу%20деятельности%20(ЛС%2C%20МИ)%20Стерильное%20%2F%20нестерильное.%20На%20какую%20позицию%20Вам%20необходим%20специалист%3F%20Наберу%20в%20течение%20часа.%20Сауле." target="_blank" class="btn-whatsapp" id="whatsappBtn" style="padding:12px 28px; font-size:1rem;">
             <i class="fab fa-whatsapp"></i> Написать в WhatsApp
           </a>
           <button class="btn-outline" id="copyPhoneBtn"><i class="fas fa-phone-alt"></i> Сохранить номер</button>
@@ -457,7 +478,6 @@
         </div>
       </div>
 
-      <!-- Stats block -->
       <div style="flex:1; background:linear-gradient(135deg,#124c64,#0b2b3b); border-radius:28px; padding:32px 24px; color:#fff; text-align:center;">
         <div><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">17+</span><br><span style="font-size:0.9rem; opacity:0.8;">лет в фармацевтике</span></div>
         <div style="margin:20px 0;"><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">5+</span><br><span style="font-size:0.9rem; opacity:0.8;">клинических исследований</span></div>
@@ -465,153 +485,51 @@
       </div>
     </div>
 
-    <!-- Achievement highlights -->
     <div class="achievement-grid">
-      <div class="achievement-item">
-        <div class="number">7%</div>
-        <div class="label">снижение брака пленки</div>
-      </div>
-      <div class="achievement-item">
-        <div class="number">2ч → 3мин</div>
-        <div class="label">расчёт сырья (Excel-автоматизация)</div>
-      </div>
-      <div class="achievement-item">
-        <div class="number">15–20%</div>
-        <div class="label">экономия времени руководителя</div>
-      </div>
-      <div class="achievement-item">
-        <div class="number">100%</div>
-        <div class="label">прослеживаемость СОП</div>
-      </div>
+      <div class="achievement-item"><div class="number">7%</div><div class="label">снижение брака пленки</div></div>
+      <div class="achievement-item"><div class="number">2ч → 3мин</div><div class="label">расчёт сырья (Excel)</div></div>
+      <div class="achievement-item"><div class="number">15–20%</div><div class="label">экономия времени</div></div>
+      <div class="achievement-item"><div class="number">100%</div><div class="label">прослеживаемость СОП</div></div>
     </div>
 
-    <!-- 4 core competencies -->
     <div class="grid-2col">
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-        <h3>Проактивное управление качеством</h3>
-        <p>Непрерывная верификация процессов, CAPA, управление рисками, предупреждение отклонений.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-microchip"></i></div>
-        <h3>Цифровизация & IT-решения</h3>
-        <p>Bitrix24, голосовые боты (Twin), оцифровка QC/QA, автоматизация рутины.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-flask"></i></div>
-        <h3>GMP • СОП • Регистрация</h3>
-        <p>Разработка СОП по GMP, сопровождение клинических исследований, актуализация НПА.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon"><i class="fas fa-magic"></i></div>
-        <h3>Вайб-кодинг</h3>
-        <p>Быстрое прототипирование, low-code/no-code, промпт-инжиниринг, скрипты для автоматизации.</p>
-      </div>
+      <div class="card"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>Проактивное управление качеством</h3><p>Непрерывная верификация процессов, CAPA, управление рисками.</p></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-microchip"></i></div><h3>Цифровизация & IT-решения</h3><p>Bitrix24, Twin, оцифровка QC/QA, автоматизация рутины.</p></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-flask"></i></div><h3>GMP • СОП • Регистрация</h3><p>Разработка СОП по GMP, сопровождение клинических исследований.</p></div>
+      <div class="card"><div class="card-icon"><i class="fas fa-magic"></i></div><h3>Вайб-кодинг</h3><p>Быстрое прототипирование, low-code/no-code, промпт-инжиниринг.</p></div>
     </div>
   </section>
 
-  <!-- ==================== EXPERIENCE ==================== -->
+  <!-- ===== EXPERIENCE ===== -->
   <section class="page" id="page-experience">
     <h2 class="page-title">Опыт работы</h2>
-
-    <div class="exp-item">
-      <div class="exp-header"><span class="exp-company">ТОО «PHARMA TECH STANDART» (PTS)</span><span class="exp-period">2026 — н.в.</span></div>
-      <div class="exp-role">Директор ТОО</div>
-      <ul class="exp-desc"><li>Импорт средств гигиены под казахстанским брендом, разработка спецификации OEM производства.</li></ul>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-header"><span class="exp-company">ТОО «GSG Pharma Corporation» (концентраты для гемодиализа)</span><span class="exp-period">авг 2024 — янв 2026</span></div>
-      <div class="exp-role">Заместитель генерального директора по качеству (ПРК)</div>
-      <ul class="exp-desc">
-        <li>Узаконила деятельность: исправление ошибок в лицензиях.</li>
-        <li>Легализовала продукт: актуализация СТ и РУ на МИ.</li>
-        <li>Оцифровала процессы: создание калькулятора расхода сырья.</li>
-        <li>Создала систему мониторинга сырья.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-header"><span class="exp-company">ТОО «Dolce» (Медицинские изделия, штат 400)</span><span class="exp-period">июль 2021 — март 2023</span></div>
-      <div class="exp-role">Исполнительный директор</div>
-      <ul class="exp-desc">
-        <li>Организация бесперебойной работы всех участков производства.</li>
-        <li>Внедрение элементов GMP в ISO 13485:2016.</li>
-        <li>Аудит новых проектов до DQ, управление CAPA.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-header"><span class="exp-company">ТОО «НУР-МАЙ ФАРМАЦИЯ» (инфузионные/инъекционные растворы, 120 чел)</span><span class="exp-period">2011 — 2021</span></div>
-      <div class="exp-role">Заместитель по производству / Заместитель по качеству</div>
-      <ul class="exp-desc">
-        <li>Снижение брака пленки на 7% за счёт оптимизации линии Plumat.</li>
-        <li>Оцифровка лабораторных данных (Excel-дашборды с ретроспективным анализом).</li>
-        <li>Хронометраж сотрудников QA/QC, пересмотр ДИ.</li>
-        <li>Разработка универсальных СОП под стандарты РК.</li>
-      </ul>
-    </div>
-
-    <div class="exp-item">
-      <div class="exp-header"><span class="exp-company">ТОО «НУР-МАЙ ФАРМ» (директор завода)</span><span class="exp-period">2009 — 2011</span></div>
-      <div class="exp-role">Директор завода</div>
-      <ul class="exp-desc"><li>Полное управление производственным циклом, запуск новых линий.</li></ul>
-    </div>
-
+    <div class="exp-item"><div class="exp-header"><span class="exp-company">ТОО «PHARMA TECH STANDART» (PTS)</span><span class="exp-period">2026 — н.в.</span></div><div class="exp-role">Директор ТОО</div><ul class="exp-desc"><li>Импорт средств гигиены под казахстанским брендом, разработка спецификации OEM производства.</li></ul></div>
+    <div class="exp-item"><div class="exp-header"><span class="exp-company">ТОО «GSG Pharma Corporation»</span><span class="exp-period">авг 2024 — янв 2026</span></div><div class="exp-role">Заместитель гендиректора по качеству</div><ul class="exp-desc"><li>Узаконила деятельность: исправление ошибок в лицензиях.</li><li>Легализовала продукт: актуализация СТ и РУ на МИ.</li><li>Оцифровала процессы: создание калькулятора расхода сырья.</li></ul></div>
+    <div class="exp-item"><div class="exp-header"><span class="exp-company">ТОО «Dolce» (МИ, штат 400)</span><span class="exp-period">июль 2021 — март 2023</span></div><div class="exp-role">Исполнительный директор</div><ul class="exp-desc"><li>Организация бесперебойной работы всех участков производства.</li><li>Внедрение элементов GMP в ISO 13485:2016.</li></ul></div>
+    <div class="exp-item"><div class="exp-header"><span class="exp-company">ТОО «НУР-МАЙ ФАРМАЦИЯ» (инфузионные растворы, 120 чел)</span><span class="exp-period">2011 — 2021</span></div><div class="exp-role">Заместитель по производству / по качеству</div><ul class="exp-desc"><li>Снижение брака пленки на 7% за счёт оптимизации линии Plumat.</li><li>Оцифровка лабораторных данных (Excel-дашборды).</li><li>Разработка универсальных СОП под стандарты РК.</li></ul></div>
     <div style="margin-top:24px; display:flex; flex-wrap:wrap; gap:10px;">
-      <span class="skill-tag">🏆 Снижение брака пленки 7%</span>
-      <span class="skill-tag">📊 Оцифровка исторических данных</span>
-      <span class="skill-tag">🤖 Чат-боты для сотрудников</span>
+      <span class="skill-tag">🏆 Снижение брака 7%</span>
+      <span class="skill-tag">📊 Оцифровка данных</span>
+      <span class="skill-tag">🤖 Чат-боты</span>
       <span class="skill-tag">📈 Автосводка KPI</span>
     </div>
   </section>
 
-  <!-- ==================== VIBE-CODING ==================== -->
+  <!-- ===== VIBE-CODING ===== -->
   <section class="page" id="page-vibecoding">
     <h2 class="page-title">Примеры вайб-кодинга</h2>
-    <p style="font-size:1.05rem; color:#2c4253; margin-bottom:32px; max-width:800px;">
-      <strong>Вайб-кодинг</strong> — быстрое прототипирование через интуитивные скрипты, low-code/no-code и промпт-инжиниринг. Мои реальные кейсы:
-    </p>
+    <p style="font-size:1.05rem; color:#2c4253; margin-bottom:32px;"><strong>Вайб-кодинг</strong> — быстрое прототипирование через интуитивные скрипты, low-code/no-code и промпт-инжиниринг.</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:24px;">
-      <div class="vibe-card">
-        <h4><i class="fas fa-calculator" style="color:#47d7ac;"></i> Калькулятор расхода сырья</h4>
-        <p>Excel + макросы — расчёт потребности в сырье с 2 часов до 3 минут. Исключены ошибки.</p>
-        <div style="margin-top:8px;"><span class="skill-tag">Excel VBA</span><span class="skill-tag">Автоматизация</span></div>
-      </div>
-      <div class="vibe-card">
-        <h4><i class="fas fa-chart-pie" style="color:#47d7ac;"></i> Дашборд лабораторных данных</h4>
-        <p>Power Query + Excel: ретроспективный анализ испытаний за 3 года «в один клик».</p>
-        <div style="margin-top:8px;"><span class="skill-tag">Power Query</span><span class="skill-tag">Дашборды</span></div>
-      </div>
-      <div class="vibe-card">
-        <h4><i class="fas fa-robot" style="color:#47d7ac;"></i> Чат-бот для сотрудников</h4>
-        <p>Twin + Bitrix24: голосовой бот отвечает на вопросы по СОП, графику, контактам. Экономия времени руководителя на 15–20%.</p>
-        <div style="margin-top:8px;"><span class="skill-tag">Twin</span><span class="skill-tag">Bitrix24</span><span class="skill-tag">NLU</span></div>
-      </div>
-      <div class="vibe-card">
-        <h4><i class="fas fa-file-signature" style="color:#47d7ac;"></i> Трекер регистрационных удостоверений</h4>
-        <p>Bitrix24 с автоподсказками за 90/60/30 дней до истечения срока. Исключены риски просрочек.</p>
-        <div style="margin-top:8px;"><span class="skill-tag">Bitrix24</span><span class="skill-tag">CRM</span></div>
-      </div>
-      <div class="vibe-card">
-        <h4><i class="fas fa-folder-tree" style="color:#47d7ac;"></i> Сетевая система версий СОП</h4>
-        <p>Структура папок «Действующие», «Архив», «На согласовании». Все используют актуальные документы.</p>
-        <div style="margin-top:8px;"><span class="skill-tag">Документооборот</span><span class="skill-tag">СОП</span></div>
-      </div>
-      <div class="vibe-card">
-        <h4><i class="fas fa-chart-bar" style="color:#47d7ac;"></i> Автосводка KPI</h4>
-        <p>Google Sheets + скрипт: ежедневный сбор данных по браку, простоям, плану. Отправка в Telegram через webhook.</p>
-        <div style="margin-top:8px;"><span class="skill-tag">Google Script</span><span class="skill-tag">Telegram API</span></div>
-      </div>
-    </div>
-    <div style="margin-top:32px; background:#e1f2ee; border-radius:24px; padding:24px; border-left:6px solid #47d7ac;">
-      <p style="font-weight:500; color:#0e4d5e;">
-        <i class="fas fa-music" style="color:#47d7ac;"></i> Мой подход: «кодинг под вибрацию бизнеса» — создаю решения, которые чувствуют контекст, легко адаптируются и приносят пользу без лишней бюрократии.
-      </p>
+      <div class="vibe-card"><h4><i class="fas fa-calculator" style="color:#47d7ac;"></i> Калькулятор расхода сырья</h4><p>Excel + макросы — расчёт с 2 часов до 3 минут.</p><div style="margin-top:8px;"><span class="skill-tag">Excel VBA</span></div></div>
+      <div class="vibe-card"><h4><i class="fas fa-chart-pie" style="color:#47d7ac;"></i> Дашборд лабораторных данных</h4><p>Power Query + Excel: ретроспективный анализ за 3 года.</p><div style="margin-top:8px;"><span class="skill-tag">Power Query</span></div></div>
+      <div class="vibe-card"><h4><i class="fas fa-robot" style="color:#47d7ac;"></i> Чат-бот для сотрудников</h4><p>Twin + Bitrix24: голосовой бот отвечает на вопросы по СОП.</p><div style="margin-top:8px;"><span class="skill-tag">Twin</span><span class="skill-tag">Bitrix24</span></div></div>
+      <div class="vibe-card"><h4><i class="fas fa-file-signature" style="color:#47d7ac;"></i> Трекер РУ</h4><p>Bitrix24 с автоподсказками за 90/60/30 дней до истечения.</p><div style="margin-top:8px;"><span class="skill-tag">Bitrix24</span></div></div>
+      <div class="vibe-card"><h4><i class="fas fa-folder-tree" style="color:#47d7ac;"></i> Сетевая система версий СОП</h4><p>Структура «Действующие», «Архив», «На согласовании».</p></div>
+      <div class="vibe-card"><h4><i class="fas fa-chart-bar" style="color:#47d7ac;"></i> Автосводка KPI</h4><p>Google Sheets + скрипт: сбор данных, отправка в Telegram.</p><div style="margin-top:8px;"><span class="skill-tag">Google Script</span></div></div>
     </div>
   </section>
 
-  <!-- ==================== SKILLS ==================== -->
+  <!-- ===== SKILLS ===== -->
   <section class="page" id="page-skills">
     <h2 class="page-title">Компетенции & Образование</h2>
     <div class="grid-2col">
@@ -620,84 +538,46 @@
         <div class="card">
           <p><strong>Провизор-аналитик</strong><br>КазНМУ им. С.Д. Асфендиярова, 1992</p>
           <hr style="margin:12px 0; border-color:#e9f0f4;">
-          <p><strong>Ключевые сертификаты:</strong></p>
-          <ul style="padding-left:20px; color:#2c4253; font-size:0.95rem;">
-            <li>Лицензия №KZ25000751715 (ЛС и МИ, 2025)</li>
-            <li>Лицензия №KZ25000384682 (ВШОЗ, 2025)</li>
-            <li>Сертификат партнера Bitrix24.KZ (2024)</li>
-            <li>Twin (РФ) — разработка голосовых ботов (2022)</li>
-            <li>TUV AUSTRIA Management Program (2015)</li>
-            <li>Первый МГМУ им. Сеченова (2014)</li>
-          </ul>
+          <p><strong>Сертификаты:</strong> Лицензия №KZ25000751715, №KZ25000384682, Bitrix24.KZ, Twin, TUV AUSTRIA, Сеченова.</p>
         </div>
       </div>
       <div>
         <h3 style="color:#0e3b4b; margin-bottom:16px;"><i class="fas fa-microchip" style="color:#47d7ac;"></i> Цифровые навыки</h3>
         <div class="card">
-          <p><strong>Платформы & инструменты:</strong></p>
-          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
-            <span class="skill-tag">Bitrix24</span>
-            <span class="skill-tag">Twin</span>
-            <span class="skill-tag">Excel (продвинутый)</span>
-            <span class="skill-tag">Power Query</span>
-            <span class="skill-tag">Google Apps Script</span>
-            <span class="skill-tag">NLU</span>
-            <span class="skill-tag">Промпт-инжиниринг</span>
-            <span class="skill-tag">Python (скетчи)</span>
+          <div style="display:flex; flex-wrap:wrap; gap:6px;">
+            <span class="skill-tag">Bitrix24</span><span class="skill-tag">Twin</span>
+            <span class="skill-tag">Excel (продвинутый)</span><span class="skill-tag">Power Query</span>
+            <span class="skill-tag">Google Apps Script</span><span class="skill-tag">NLU</span>
+            <span class="skill-tag">Промпт-инжиниринг</span><span class="skill-tag">Python</span>
           </div>
           <hr style="margin:16px 0; border-color:#e9f0f4;">
-          <p><strong>Стажировки:</strong> Kolpitt (Голландия), Bausch (Швейцария), Plumat (Германия), Shijiazhuang No.4 (Китай).</p>
-        </div>
-        <div class="card" style="margin-top:16px;">
-          <p><strong>Языки:</strong> Русский — свободно, Казахский — свободно, Английский — технический.</p>
+          <p><strong>Стажировки:</strong> Kolpitt (Голландия), Bausch (Швейцария), Plumat (Германия).</p>
+          <p><strong>Языки:</strong> Русский, Казахский — свободно, Английский — технический.</p>
         </div>
       </div>
-    </div>
-    <div style="margin-top:32px; background:#e1f2ee; border-radius:24px; padding:24px; border-left:6px solid #47d7ac;">
-      <p style="font-weight:500; color:#0e4d5e;">
-        <i class="fas fa-quote-left" style="color:#47d7ac; margin-right:8px;"></i>
-        Моя философия: создание прослеживаемой системы мониторинга сырья и процессов, где каждое отклонение предупреждается до его возникновения.
-      </p>
     </div>
   </section>
 
-  <!-- ==================== CONTACT ==================== -->
+  <!-- ===== CONTACT ===== -->
   <section class="page" id="page-contact">
     <h2 class="page-title">Контакты</h2>
     <div class="contact-card">
-      <div style="font-size:3.5rem; color:#25D366; margin-bottom:16px;">
-        <i class="fab fa-whatsapp"></i>
-      </div>
+      <div style="font-size:3.5rem; color:#25D366; margin-bottom:16px;"><i class="fab fa-whatsapp"></i></div>
       <h3 style="color:#0e3b4b; font-size:1.4rem;">Свяжитесь со мной</h3>
-      <p style="color:#2c4253; margin:12px 0 8px;">Предпочтительный способ связи — WhatsApp. Отвечаю оперативно.</p>
-      <p style="color:#0e4d5e; font-weight:600; margin-bottom:20px;">
-        <i class="far fa-clock"></i> 🕐 Отвечаю с 8:00 до 20:00
-      </p>
+      <p style="color:#2c4253; margin:12px 0 8px;">Предпочтительный способ — WhatsApp. Отвечаю с 8:00 до 20:00.</p>
 
-      <div class="auto-message-preview" style="text-align:left; background:#f0f9f5;">
-        <strong><i class="fas fa-comment-dots"></i> Автоматическое сообщение:</strong><br>
+      <!-- ===== СКРЫТОЕ АВТОСООБЩЕНИЕ НА СТРАНИЦЕ КОНТАКТОВ ===== -->
+      <div class="auto-message-preview" id="autoMessageContact">
+        <strong><i class="fas fa-check-circle" style="color:#28a745;"></i> Автосообщение отправлено:</strong><br>
         «Здравствуйте! Благодарю за отклик, опишите сферу деятельности (ЛС, МИ) Стерильное / нестерильное. На какую позицию Вам необходим специалист? Наберу в течение часа. Сауле.»
       </div>
 
-      <a href="https://wa.me/77777717707?text=Здравствуйте!%20Благодарю%20за%20отклик%2C%20опишите%20сферу%20деятельности%20(ЛС%2C%20МИ)%20Стерильное%20%2F%20нестерильное.%20На%20какую%20позицию%20Вам%20необходим%20специалист%3F%20Наберу%20в%20течение%20часа.%20Сауле." target="_blank" class="btn-whatsapp">
+      <a href="https://wa.me/77777717707?text=Здравствуйте!%20Благодарю%20за%20отклик%2C%20опишите%20сферу%20деятельности%20(ЛС%2C%20МИ)%20Стерильное%20%2F%20нестерильное.%20На%20какую%20позицию%20Вам%20необходим%20специалист%3F%20Наберу%20в%20течение%20часа.%20Сауле." target="_blank" class="btn-whatsapp" id="whatsappBtnContact">
         <i class="fab fa-whatsapp"></i> Написать в WhatsApp
       </a>
-      <div style="margin-top:20px;">
-        <button class="btn-outline" id="copyPhoneBtn2"><i class="fas fa-phone-alt"></i> Сохранить номер</button>
-      </div>
-
-      <!-- Ссылка на сайт в контактах -->
-      <div class="site-link-box" style="margin-top:20px;">
-        <i class="fas fa-globe"></i>
-        <span>Онлайн-резюме:</span>
-        <a href="https://akhmetsaule4-cell.github.io/sauleaudit/" target="_blank">
-          akhmetsaule4-cell.github.io/sauleaudit/
-        </a>
-      </div>
-
-      <p style="margin-top:20px; font-size:0.9rem; color:#5b7c8c;">
-        <i class="fas fa-map-marker-alt"></i> Алматы, Казахстан
-      </p>
+      <div style="margin-top:20px;"><button class="btn-outline" id="copyPhoneBtn2"><i class="fas fa-phone-alt"></i> Сохранить номер</button></div>
+      <div class="site-link-box" style="margin-top:20px;"><i class="fas fa-globe"></i><span>Онлайн-резюме:</span><a href="https://akhmetsaule4-cell.github.io/sauleaudit/" target="_blank">akhmetsaule4-cell.github.io/sauleaudit/</a></div>
+      <p style="margin-top:20px; font-size:0.9rem; color:#5b7c8c;"><i class="fas fa-map-marker-alt"></i> Алматы, Казахстан</p>
     </div>
   </section>
 
@@ -707,15 +587,13 @@
   <div class="container">
     <p style="font-weight:600;">Сауле Ахмет</p>
     <p style="font-size:0.85rem; opacity:0.8;">Эксперт по GMP, цифровизации и вайб-кодингу</p>
-    <p style="font-size:0.8rem; opacity:0.6; margin-top:8px;">
-      <i class="fab fa-whatsapp" style="color:#25D366;"></i> Связь через WhatsApp
-    </p>
+    <p style="font-size:0.8rem; opacity:0.6; margin-top:8px;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Связь через WhatsApp</p>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-  // ===== NAVIGATION =====
+  // ===== НАВИГАЦИЯ =====
   const navLinks = document.querySelectorAll('.nav a:not(.pdf-btn)');
   const pages = {
     home: document.getElementById('page-home'),
@@ -745,7 +623,7 @@
     setTimeout(() => t.classList.remove('show'), 2500);
   }
 
-  // ===== COPY PHONE =====
+  // ===== КОПИРОВАНИЕ НОМЕРА =====
   function copyPhone() {
     navigator.clipboard.writeText('+7 777 7717707').then(() => {
       showToast('📱 Номер сохранён: +7 777 771 77 07');
@@ -754,7 +632,30 @@
   document.getElementById('copyPhoneBtn').addEventListener('click', copyPhone);
   document.getElementById('copyPhoneBtn2').addEventListener('click', copyPhone);
 
-  // ===== PDF GENERATION =====
+  // ===== ПОКАЗ АВТОСООБЩЕНИЯ ПРИ НАЖАТИИ НА WHATSAPP =====
+  function showAutoMessage(messageId) {
+    const el = document.getElementById(messageId);
+    if (el) {
+      el.classList.add('show');
+      // Автоматически скрыть через 8 секунд
+      setTimeout(() => {
+        el.classList.remove('show');
+      }, 8000);
+    }
+  }
+
+  // Кнопка на главной
+  document.getElementById('whatsappBtn').addEventListener('click', function(e) {
+    showAutoMessage('autoMessage');
+    // Не блокируем переход на WhatsApp
+  });
+
+  // Кнопка на странице контактов
+  document.getElementById('whatsappBtnContact').addEventListener('click', function(e) {
+    showAutoMessage('autoMessageContact');
+  });
+
+  // ===== PDF ГЕНЕРАЦИЯ (ВСЕ СТРАНИЦЫ) =====
   document.getElementById('pdfDownloadBtn').addEventListener('click', function(e) {
     e.preventDefault();
     const btn = this;
@@ -762,19 +663,10 @@
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Генерация...';
     btn.style.opacity = '0.6';
 
-    const element = document.querySelector('.container');
-    const allPages = document.querySelectorAll('.page');
-    const hiddenPages = [];
+    // Показываем все страницы для PDF
+    document.body.classList.add('pdf-mode');
 
-    allPages.forEach(p => {
-      if (!p.classList.contains('active')) {
-        hiddenPages.push(p);
-        p.style.display = 'block';
-        p.style.opacity = '1';
-        p.style.animation = 'none';
-      }
-    });
-
+    const element = document.getElementById('pdfContent');
     const opt = {
       margin:        [0.5, 0.5, 0.5, 0.5],
       filename:     'Сауле_Ахмет_Резюме.pdf',
@@ -784,19 +676,11 @@
     };
 
     html2pdf().set(opt).from(element).save().then(() => {
-      hiddenPages.forEach(p => {
-        p.style.display = '';
-        p.style.opacity = '';
-        p.style.animation = '';
-      });
+      document.body.classList.remove('pdf-mode');
       btn.innerHTML = originalText;
       btn.style.opacity = '1';
     }).catch(() => {
-      hiddenPages.forEach(p => {
-        p.style.display = '';
-        p.style.opacity = '';
-        p.style.animation = '';
-      });
+      document.body.classList.remove('pdf-mode');
       btn.innerHTML = originalText;
       btn.style.opacity = '1';
       showToast('⚠️ Ошибка при создании PDF');
