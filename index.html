@@ -1,757 +1,807 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Аудит и GMP консультации | Сауле Ахмет</title>
-    <meta name="description" content="Эксперт по качеству с 17+ летним опытом. Аудит фармацевтических производств, регистрация ЛС и МИ, внедрение GMP в Казахстане." />
-    <meta name="keywords" content="аудит фармацевтического производства, GMP консультации, регистрация лекарственных средств, управление качеством, СЭЗ Алатау, Казахстан, медицинские изделия" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сауле Ахмет | Стратегическое управление фармпроизводством</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f7fc;
+      color: #1e2a3e;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-    <!-- Подтверждение для Яндекс.Вебмастер -->
-    <meta name="yandex-verification" content="f0e966fc678982d2" />
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #0b2b3b, #124c64);
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: #47d7ac;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+    .nav a:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .nav a.active {
+      background: rgba(71, 215, 172, 0.25);
+      color: #47d7ac;
+    }
+    .nav .pdf-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .nav .pdf-btn:hover {
+      background: rgba(71, 215, 172, 0.3);
+      border-color: #47d7ac;
+    }
 
-    <!-- Open Graph для соцсетей -->
-    <meta property="og:title" content="Аудит и GMP консультации | Сауле Ахмет" />
-    <meta property="og:description" content="Эксперт по качеству с 17+ летним опытом. Аудит, регистрация, внедрение GMP в Казахстане." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://akhmetsaule4-cell.github.io/sauleaudit/" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Аудит и GMP консультации | Сауле Ахмет" />
-    <meta name="twitter:description" content="Эксперт по качеству с 17+ летним опытом. Аудит, регистрация, внедрение GMP в Казахстане." />
+    /* Pages */
+    .page {
+      display: none;
+      padding: 48px 0 64px;
+    }
+    .page.active {
+      display: block;
+      animation: fadeIn 0.35s ease;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0e3b4b;
+      margin-bottom: 32px;
+    }
+    .page-title:after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #47d7ac;
+      border-radius: 4px;
+      margin-top: 8px;
+    }
 
-    <!-- Каноническая ссылка -->
-    <link rel="canonical" href="https://akhmetsaule4-cell.github.io/sauleaudit/" />
+    /* Cards */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px 28px;
+      box-shadow: 0 8px 24px -12px rgba(0,0,0,0.08);
+      border: 1px solid #e9f0f4;
+      transition: 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -14px rgba(0,0,0,0.12);
+    }
+    .card-icon {
+      font-size: 2rem;
+      color: #47d7ac;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #0e3b4b;
+    }
+    .card p {
+      color: #2c4253;
+      font-size: 0.95rem;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f4f7fc;
-            color: #1e2a3e;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+    .skill-tag {
+      background: #eef3f7;
+      color: #11556b;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-block;
+      margin: 4px 4px 0 0;
+    }
 
-        .header {
-            background: linear-gradient(135deg, #0b2b3b, #124c64);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-        .logo span {
-            color: #47d7ac;
-        }
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-        }
-        .nav a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-        }
-        .nav a:hover {
-            background: rgba(255,255,255,0.12);
-            color: #fff;
-        }
-        .nav a.active {
-            background: rgba(71, 215, 172, 0.25);
-            color: #47d7ac;
-        }
+    /* Experience */
+    .exp-item {
+      margin-bottom: 32px;
+      border-left: 3px solid #47d7ac;
+      padding-left: 20px;
+    }
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .exp-company {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #0f4c62;
+    }
+    .exp-period {
+      font-size: 0.8rem;
+      color: #5b7c8c;
+      font-weight: 500;
+    }
+    .exp-role {
+      font-weight: 600;
+      color: #2c6e8a;
+      margin: 4px 0 8px;
+      font-size: 0.95rem;
+    }
+    .exp-desc {
+      font-size: 0.9rem;
+      color: #2c4253;
+      padding-left: 20px;
+    }
+    .exp-desc li {
+      margin-bottom: 4px;
+    }
 
-        .page {
-            display: none;
-            padding: 48px 0 64px;
-        }
-        .page.active {
-            display: block;
-            animation: fadeIn 0.35s ease;
-        }
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .page-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #0e3b4b;
-            margin-bottom: 32px;
-        }
-        .page-title:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: #47d7ac;
-            border-radius: 4px;
-            margin-top: 8px;
-        }
+    /* Vibe cards */
+    .vibe-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px 24px;
+      border-left: 5px solid #47d7ac;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: 0.2s;
+    }
+    .vibe-card:hover {
+      transform: translateX(6px);
+    }
+    .vibe-card h4 {
+      color: #0e3b4b;
+      margin-bottom: 4px;
+    }
+    .vibe-card p {
+      color: #2c4253;
+      font-size: 0.9rem;
+    }
 
-        .grid-2col {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-        .grid-3col {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-        .card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 24px 28px;
-            box-shadow: 0 8px 24px -12px rgba(0,0,0,0.08);
-            border: 1px solid #e9f0f4;
-            transition: 0.25s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 32px -14px rgba(0,0,0,0.12);
-        }
-        .card-icon {
-            font-size: 2rem;
-            color: #47d7ac;
-            margin-bottom: 12px;
-        }
-        .card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #0e3b4b;
-        }
-        .card p {
-            color: #2c4253;
-            font-size: 0.95rem;
-        }
+    /* Contact */
+    .contact-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 40px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      border: 1px solid #e9f0f4;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #25D366;
+      color: #fff;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #47d7ac;
+      color: #0e3b4b;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: #47d7ac;
+      color: #fff;
+    }
 
-        .package-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 32px 28px;
-            box-shadow: 0 8px 24px -12px rgba(0,0,0,0.08);
-            border: 2px solid #e9f0f4;
-            transition: 0.3s;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .package-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px -14px rgba(0,0,0,0.15);
-        }
-        .package-card.popular {
-            border-color: #47d7ac;
-            background: #f8fffd;
-        }
-        .package-card.popular::before {
-            content: '🔥 Рекомендуемый';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #47d7ac;
-            color: #fff;
-            padding: 4px 20px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .package-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #0e3b4b;
-            margin-bottom: 8px;
-        }
-        .package-price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #124c64;
-            margin: 12px 0;
-        }
-        .package-price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #5b7c8c;
-        }
-        .package-features {
-            list-style: none;
-            padding: 0;
-            margin: 16px 0 24px;
-            text-align: left;
-            flex-grow: 1;
-        }
-        .package-features li {
-            padding: 6px 0;
-            border-bottom: 1px solid #f0f4f8;
-            font-size: 0.9rem;
-            color: #2c4253;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .package-features li:last-child {
-            border-bottom: none;
-        }
-        .package-features li i {
-            color: #47d7ac;
-            width: 20px;
-        }
-        .btn-package {
-            display: inline-block;
-            background: #124c64;
-            color: #fff;
-            padding: 12px 32px;
-            border-radius: 60px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            margin-top: auto;
-            text-align: center;
-        }
-        .btn-package:hover {
-            background: #0e3b4b;
-            transform: translateY(-2px);
-        }
-        .btn-package.popular-btn {
-            background: #47d7ac;
-            color: #0b2b3b;
-        }
-        .btn-package.popular-btn:hover {
-            background: #3bc49b;
-        }
+    .footer {
+      background: #0b2b3b;
+      color: #cddfe6;
+      padding: 32px 0 24px;
+      text-align: center;
+      border-top-left-radius: 32px;
+      border-top-right-radius: 32px;
+      margin-top: 24px;
+    }
 
-        .skill-tag {
-            background: #eef3f7;
-            color: #11556b;
-            padding: 6px 14px;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            display: inline-block;
-            margin: 4px 4px 0 0;
-        }
+    .toast {
+      visibility: hidden;
+      min-width: 260px;
+      background: #0b2b3b;
+      color: #fff;
+      text-align: center;
+      border-radius: 40px;
+      padding: 14px 24px;
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+    }
 
-        .exp-item {
-            margin-bottom: 32px;
-            border-left: 3px solid #47d7ac;
-            padding-left: 20px;
-        }
-        .exp-header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .exp-company {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #0f4c62;
-        }
-        .exp-period {
-            font-size: 0.8rem;
-            color: #5b7c8c;
-            font-weight: 500;
-        }
-        .exp-role {
-            font-weight: 600;
-            color: #2c6e8a;
-            margin: 4px 0 8px;
-            font-size: 0.95rem;
-        }
-        .exp-desc {
-            font-size: 0.9rem;
-            color: #2c4253;
-            padding-left: 20px;
-        }
-        .exp-desc li {
-            margin-bottom: 4px;
-        }
+    .hours-badge {
+      display: inline-block;
+      background: #e1f2ee;
+      color: #0e4d5e;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    .hours-badge i {
+      margin-right: 8px;
+    }
 
-        .vibe-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 20px 24px;
-            border-left: 5px solid #ffa94d;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            transition: 0.2s;
-        }
-        .vibe-card:hover {
-            transform: translateX(6px);
-        }
-        .vibe-card h4 {
-            color: #0e3b4b;
-            margin-bottom: 4px;
-        }
-        .vibe-card p {
-            color: #2c4253;
-            font-size: 0.9rem;
-        }
-        .vibe-card .level-badge {
-            display: inline-block;
-            background: #ffecd6;
-            color: #cc7a00;
-            padding: 2px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
+    .auto-message-preview {
+      background: #f0f9f5;
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-left: 4px solid #47d7ac;
+      font-size: 0.95rem;
+      color: #0e4d5e;
+    }
+    .auto-message-preview strong {
+      color: #0b2b3b;
+    }
 
-        .contact-card {
-            background: #fff;
-            border-radius: 28px;
-            padding: 40px;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid #e9f0f4;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-        }
+    .site-link-box {
+      background: #eef3f7;
+      border-radius: 16px;
+      padding: 14px 20px;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border: 1px dashed #47d7ac;
+    }
+    .site-link-box a {
+      color: #0e3b4b;
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .site-link-box a:hover {
+      color: #47d7ac;
+    }
+    .site-link-box i {
+      color: #47d7ac;
+      font-size: 1.2rem;
+    }
 
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: #25D366;
-            color: #fff;
-            padding: 14px 36px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-whatsapp:hover {
-            background: #1da851;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
+    /* New: Achievement highlight */
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .achievement-item {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid #e9f0f4;
+    }
+    .achievement-item .number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0e3b4b;
+    }
+    .achievement-item .label {
+      font-size: 0.9rem;
+      color: #5b7c8c;
+    }
 
-        .footer {
-            background: #0b2b3b;
-            color: #cddfe6;
-            padding: 32px 0 24px;
-            text-align: center;
-            border-top-left-radius: 32px;
-            border-top-right-radius: 32px;
-            margin-top: 24px;
-        }
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .nav {
+        justify-content: center;
+      }
+      .nav a {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+      .page-title {
+        font-size: 1.7rem;
+      }
+    }
 
-        .toast {
-            visibility: hidden;
-            min-width: 260px;
-            background: #0b2b3b;
-            color: #fff;
-            text-align: center;
-            border-radius: 40px;
-            padding: 14px 24px;
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999;
-            font-weight: 500;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .hours-badge {
-            display: inline-block;
-            background: #e1f2ee;
-            color: #0e4d5e;
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-        .hours-badge i {
-            margin-right: 8px;
-        }
-
-        .whatsapp-hint {
-            background: #f0f9f5;
-            border-radius: 16px;
-            padding: 14px 20px;
-            margin: 16px 0;
-            border-left: 4px solid #25D366;
-            font-size: 0.95rem;
-            color: #0e4d5e;
-        }
-        .whatsapp-hint i {
-            color: #25D366;
-            margin-right: 8px;
-        }
-
-        @media (max-width: 700px) {
-            .header-inner {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .nav {
-                justify-content: center;
-            }
-            .nav a {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-            .page-title {
-                font-size: 1.7rem;
-            }
-        }
-    </style>
+    @media print {
+      .header { position: static; }
+      .nav .pdf-btn { display: none; }
+      .page { display: block !important; }
+      .card:hover { transform: none; }
+      .vibe-card:hover { transform: none; }
+    }
+  </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="container header-inner">
-            <div class="logo">Сауле <span>Ахмет</span></div>
-            <nav class="nav" id="mainNav">
-                <a class="active" data-page="home"><i class="fas fa-home"></i> Главная</a>
-                <a data-page="experience"><i class="fas fa-briefcase"></i> Опыт</a>
-                <a data-page="packages"><i class="fas fa-box"></i> Услуги</a>
-                <a data-page="vibecoding"><i class="fas fa-magic"></i> Вайб-кодинг</a>
-                <a data-page="contact"><i class="fas fa-phone"></i> Контакты</a>
-            </nav>
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">Сауле <span>Ахмет</span></div>
+    <nav class="nav" id="mainNav">
+      <a class="active" data-page="home"><i class="fas fa-home"></i> Главная</a>
+      <a data-page="experience"><i class="fas fa-briefcase"></i> Опыт</a>
+      <a data-page="vibecoding"><i class="fas fa-magic"></i> Вайб-кодинг</a>
+      <a data-page="skills"><i class="fas fa-star"></i> Компетенции</a>
+      <a data-page="contact"><i class="fas fa-phone"></i> Контакты</a>
+      <a class="pdf-btn" id="pdfDownloadBtn"><i class="fas fa-file-pdf"></i> PDF</a>
+    </nav>
+  </div>
+</header>
+
+<div id="toast" class="toast">✅ Скопировано!</div>
+
+<div class="container">
+
+  <!-- ==================== HOME ==================== -->
+  <section class="page active" id="page-home">
+    <div style="display:flex; flex-wrap:wrap; gap:40px; align-items:center; margin-bottom:40px;">
+      <div style="flex:2;">
+        <div style="background:#e1f2ee; display:inline-block; padding:4px 16px; border-radius:40px; font-weight:600; font-size:0.85rem; color:#0e4d5e;">
+          <i class="fas fa-check-circle" style="color:#47d7ac;"></i> Эксперт-практик • GMP • Цифровизация
         </div>
-    </header>
+        <h1 style="font-size:2.8rem; font-weight:800; margin:16px 0 8px; color:#0e3b4b;">Сауле Ахмет</h1>
+        <p style="font-size:1.2rem; font-weight:500; color:#2c6e8a;">Директор / Заместитель генерального директора по качеству</p>
+        <p style="margin-top:16px; font-size:1.05rem; color:#2c4253;">
+          Более 17 лет в фармацевтике. Внедряю «прозрачное» производство через авторские IT-решения. 
+          Перевожу предприятия из режима «исправления ошибок» в проактивное предотвращение отклонений.
+        </p>
+        <div style="margin-top:12px;">
+          <span class="hours-badge"><i class="far fa-clock"></i> Отвечаю с 8:00 до 20:00</span>
+        </div>
 
-    <div id="toast" class="toast">✅ Сообщение готово!</div>
+        <div class="auto-message-preview">
+          <strong><i class="fas fa-comment-dots"></i> Автоматическое сообщение:</strong><br>
+          «Здравствуйте! Благодарю за отклик, опишите сферу деятельности (ЛС, МИ) Стерильное / нестерильное. На какую позицию Вам необходим специалист? Наберу в течение часа. Сауле.»
+        </div>
 
-    <div class="container">
+        <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px;">
+          <a href="https://wa.me/77777717707?text=Здравствуйте!%20Благодарю%20за%20отклик%2C%20опишите%20сферу%20деятельности%20(ЛС%2C%20МИ)%20Стерильное%20%2F%20нестерильное.%20На%20какую%20позицию%20Вам%20необходим%20специалист%3F%20Наберу%20в%20течение%20часа.%20Сауле." target="_blank" class="btn-whatsapp" style="padding:12px 28px; font-size:1rem;">
+            <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+          </a>
+          <button class="btn-outline" id="copyPhoneBtn"><i class="fas fa-phone-alt"></i> Сохранить номер</button>
+        </div>
 
-        <!-- ==================== HOME ==================== -->
-        <section class="page active" id="page-home">
-            <div style="display:flex; flex-wrap:wrap; gap:40px; align-items:center; margin-bottom:40px;">
-                <div style="flex:2;">
-                    <div style="background:#e1f2ee; display:inline-block; padding:4px 16px; border-radius:40px; font-weight:600; font-size:0.85rem; color:#0e4d5e;">Эксперт-практик • GMP • Вайб-кодинг</div>
-                    <h1 style="font-size:2.8rem; font-weight:800; margin:16px 0 8px; color:#0e3b4b;">Сауле Ахмет</h1>
-                    <p style="font-size:1.2rem; font-weight:500; color:#2c6e8a;">Руководитель качества</p>
-                    <p style="font-size:1rem; color:#47d7ac; font-weight:500;">Директор по производству · Уполномоченное лицо по ЛС · ПРК в МИ</p>
-                    <p style="margin-top:16px; font-size:1.05rem; color:#2c4253;">Более 17 лет в фармацевтике. Внедряю «прозрачное» производство через авторские IT-решения. Перевожу предприятия из режима «исправления ошибок» в проактивное предотвращение отклонений.</p>
-                    <div style="margin-top:12px;">
-                        <span class="hours-badge"><i class="far fa-clock"></i> Отвечаю с 9:00 до 18:00 в будни</span>
-                    </div>
-                    <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:12px;">
-                        <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Меня%20интересует%20сотрудничество.%20Расскажите%20подробнее%20о%20ваших%20услугах.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________" target="_blank" class="btn-whatsapp" style="padding:12px 28px; font-size:1rem;">
-                            <i class="fab fa-whatsapp"></i> Связаться в WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div style="flex:1; background:linear-gradient(135deg,#124c64,#0b2b3b); border-radius:28px; padding:32px 24px; color:#fff; text-align:center;">
-                    <div><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">17+</span><br><span style="font-size:0.9rem; opacity:0.8;">лет в фармацевтике</span></div>
-                    <div style="margin:20px 0;"><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">5+</span><br><span style="font-size:0.9rem; opacity:0.8;">клинических исследований</span></div>
-                    <div><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">120+</span><br><span style="font-size:0.9rem; opacity:0.8;">сотрудников в управлении</span></div>
-                </div>
-            </div>
+        <div class="site-link-box">
+          <i class="fas fa-globe"></i>
+          <span>Онлайн-резюме:</span>
+          <a href="https://akhmetsaule4-cell.github.io/sauleaudit/" target="_blank">
+            akhmetsaule4-cell.github.io/sauleaudit/
+          </a>
+        </div>
+      </div>
 
-            <div class="grid-2col">
-                <div class="card"><div class="card-icon"><i class="fas fa-chart-line"></i></div><h3>Проактивное управление качеством</h3><p>Непрерывная верификация процессов, CAPA, управление рисками, предупреждение отклонений.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-microchip"></i></div><h3>Цифровизация & IT-решения</h3><p>Bitrix24, голосовые боты (Twin), оцифровка QC/QA, автоматизация рутины.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-flask"></i></div><h3>GMP • СОП • Регистрация</h3><p>Разработка СОП по GMP, сопровождение клинических исследований, актуализация НПА.</p></div>
-                <div class="card"><div class="card-icon"><i class="fas fa-magic"></i></div><h3>Вайб-кодинг</h3><p>Быстрое прототипирование, low-code/no-code, промпт-инжиниринг, скрипты для автоматизации.</p></div>
-            </div>
-        </section>
-
-        <!-- ==================== EXPERIENCE ==================== -->
-        <section class="page" id="page-experience">
-            <h2 class="page-title">Опыт работы</h2>
-
-            <!-- PTS -->
-            <div class="exp-item" style="border-left-color: #ffa94d; background: #f8fffd; padding: 20px 20px 10px 20px; border-radius: 16px; margin-bottom: 32px;">
-                <div class="exp-header">
-                    <span class="exp-company" style="color: #0e3b4b;">ТОО «PHARMA TECH STANDART» (PTS)</span>
-                    <span class="exp-period">2026 — н.в.</span>
-                </div>
-                <div class="exp-role">Директор ТОО</div>
-                <ul class="exp-desc">
-                    <li><strong>Организовала импорт средств гигиены</strong> под казахстанским брендом.</li>
-                    <li><strong>Разработала техническую спецификацию</strong> для OEM производства с усиленным SAP для тяжёлых степеней инконтиненции.</li>
-                    <li><strong>Провела аудит ТОП-10 китайских производителей</strong> — отбор по качеству, стабильности поставок и цене.</li>
-                    <li><strong>Организовала апробацию в Алматы и Алматинской области</strong> — изучила качество на уровне реальных потребностей лежачих пациентов, что позволило исключить риски завоза невостребованных составов.</li>
-                </ul>
-
-                <div style="background: #e1f2ee; border-radius: 16px; padding: 16px 20px; margin-top: 12px; border-left: 4px solid #47d7ac;">
-                    <h4 style="color: #0e3b4b; font-size: 0.95rem; margin-bottom: 8px;">
-                        <i class="fas fa-clipboard-list" style="color: #47d7ac;"></i> Полный цикл вывода продукта на рынок (PTS):
-                    </h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem;">
-                        <li style="padding: 4px 0; display: flex; align-items: flex-start; gap: 10px;">
-                            <span style="color: #47d7ac; font-size: 0.9rem;">✓</span>
-                            <div><strong>Разработала дизайн упаковки</strong> — с учётом актуальных требований уполномоченных органов и обновляемых правил маркировки на 2026 год.</div>
-                        </li>
-                        <li style="padding: 4px 0; display: flex; align-items: flex-start; gap: 10px;">
-                            <span style="color: #47d7ac; font-size: 0.9rem;">✓</span>
-                            <div><strong>Сопровождала регистрацию продукта</strong> — полное ведение процесса получения разрешительных документов.</div>
-                        </li>
-                        <li style="padding: 4px 0; display: flex; align-items: flex-start; gap: 10px;">
-                            <span style="color: #47d7ac; font-size: 0.9rem;">✓</span>
-                            <div><strong>Собрала досье по требованиям ЕАЭС</strong> — оформление СГР (свидетельства о государственной регистрации) для средств гигиены.</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- GSG -->
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">ТОО «GSG Pharma Corporation» (концентраты для гемодиализа)</span>
-                    <span class="exp-period">авг 2024 — янв 2026</span>
-                </div>
-                <div class="exp-role">Руководитель качества (ПРК)</div>
-                <ul class="exp-desc">
-                    <li><strong>Защитила прослеживаемость серии</strong> при аудите — от утверждения поставщика сырья до выпуска готовой серии на рынок. Полная цепочка документально подтверждена, что исключило риски при проверках.</li>
-                    <li><strong>Обновила оценку рисков</strong> — привела в соответствие с реальными производственными процессами, интегрировала в систему CAPA для упреждающего управления отклонениями.</li>
-                    <li><strong>Устранила правовые риски</strong> — привела лицензионную документацию в соответствие с актуальным адресом производства, что предотвратило возможные санкции и приостановку деятельности.</li>
-                    <li><strong>Обеспечила легальный выпуск продукции</strong> — актуализировала СТ и РУ на МИ, что исключило риски выпуска несоответствующей продукции и претензий со стороны надзорных органов.</li>
-                    <li><strong>Внедрила цифровой калькулятор расхода сырья</strong> — исключила арифметические ошибки при планировании закупок, предотвратила простои из-за нехватки материалов.</li>
-                    <li><strong>Создала систему мониторинга сырья</strong> — с доказательной базой прослеживаемости, что предотвратило риски использования несоответствующего сырья и обеспечило стабильность качества готовой продукции.</li>
-                </ul>
-            </div>
-
-            <!-- Dolce -->
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">ТОО «Dolce» (Медицинские изделия, штат 400)</span>
-                    <span class="exp-period">июль 2021 — март 2023</span>
-                </div>
-                <div class="exp-role">Исполнительный директор</div>
-                <ul class="exp-desc">
-                    <li>Организовала бесперебойную работу всех участков производства, управление CAPA.</li>
-                    <li>Внедрила элементы GMP в ISO 13485:2016.</li>
-                    <li>Провела аудит новых проектов до DQ, управление рисками.</li>
-                </ul>
-            </div>
-
-            <!-- НУР-МАЙ -->
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">ТОО «НУР-МАЙ ФАРМАЦИЯ» (инфузионные/инъекционные растворы, 120 чел)</span>
-                    <span class="exp-period">2011 — 2021</span>
-                </div>
-                <div class="exp-role">Руководитель по производству / Руководитель качества</div>
-                <ul class="exp-desc">
-                    <li>Добилась снижения брака пленки на 7% за счёт оптимизации линии Plumat.</li>
-                    <li>Провела оцифровку лабораторных данных (Excel-дашборды с ретроспективным анализом).</li>
-                    <li>Организовала хронометраж сотрудников QA/QC, пересмотрела должностные инструкции.</li>
-                    <li>Разработала универсальные СОП под стандарты РК.</li>
-                </ul>
-            </div>
-
-            <!-- НУР-МАЙ ФАРМ -->
-            <div class="exp-item">
-                <div class="exp-header">
-                    <span class="exp-company">ТОО «НУР-МАЙ ФАРМ» (директор завода)</span>
-                    <span class="exp-period">2009 — 2011</span>
-                </div>
-                <div class="exp-role">Директор завода</div>
-                <ul class="exp-desc"><li>Полное управление производственным циклом, запуск новых линий.</li></ul>
-            </div>
-        </section>
-
-        <!-- ==================== PACKAGES ==================== -->
-        <section class="page" id="page-packages">
-            <h2 class="page-title">Услуги и пакеты</h2>
-            <p style="font-size:1.05rem; color:#2c4253; margin-bottom:32px; max-width:800px;">Выберите подходящий пакет услуг. Нажмите «Выбрать», чтобы обсудить детали в WhatsApp.</p>
-            <div class="grid-3col">
-                <div class="package-card">
-                    <div class="package-name">Базовый</div>
-                    <div class="package-price">от 500 000 ₸ <span>/ проект</span></div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Аудит производства по GMP</li>
-                        <li><i class="fas fa-check-circle"></i> Разработка 5 СОП</li>
-                        <li><i class="fas fa-check-circle"></i> Карта рисков производства</li>
-                        <li><i class="fas fa-check-circle"></i> Отчёт с рекомендациями</li>
-                    </ul>
-                    <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Меня%20интересует%20пакет%20«Базовый»%20(от%20500%20000%20₸).%20Хочу%20обсудить%20детали.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________%0AКомпания%3A%20________" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Выбрать</a>
-                </div>
-                <div class="package-card popular">
-                    <div class="package-name">Оптимальный</div>
-                    <div class="package-price">от 1 200 000 ₸ <span>/ проект</span></div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Всё из Базового</li>
-                        <li><i class="fas fa-check-circle"></i> Внедрение системы качества</li>
-                        <li><i class="fas fa-check-circle"></i> Оцифровка лабораторных данных</li>
-                        <li><i class="fas fa-check-circle"></i> Обучение персонала QA/QC</li>
-                        <li><i class="fas fa-check-circle"></i> Сопровождение при аудите</li>
-                    </ul>
-                    <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Меня%20интересует%20пакет%20«Оптимальный»%20(от%201%20200%20000%20₸).%20Хочу%20обсудить%20детали.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________%0AКомпания%3A%20________" target="_blank" class="btn-package popular-btn"><i class="fab fa-whatsapp"></i> Выбрать</a>
-                </div>
-                <div class="package-card">
-                    <div class="package-name">VIP</div>
-                    <div class="package-price">от 2 500 000 ₸ <span>/ проект</span></div>
-                    <ul class="package-features">
-                        <li><i class="fas fa-check-circle"></i> Всё из Оптимального</li>
-                        <li><i class="fas fa-check-circle"></i> Полная цифровизация процессов</li>
-                        <li><i class="fas fa-check-circle"></i> Внедрение чат-ботов (Twin)</li>
-                        <li><i class="fas fa-check-circle"></i> Автоматическая сводка KPI</li>
-                        <li><i class="fas fa-check-circle"></i> Постоянное сопровождение (3 мес.)</li>
-                    </ul>
-                    <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Меня%20интересует%20пакет%20«VIP»%20(от%202%20500%20000%20₸).%20Хочу%20обсудить%20детали.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________%0AКомпания%3A%20________" target="_blank" class="btn-package"><i class="fab fa-whatsapp"></i> Выбрать</a>
-                </div>
-            </div>
-            <div style="margin-top:32px; background:#e1f2ee; border-radius:24px; padding:24px; border-left:6px solid #47d7ac; text-align:center;">
-                <p style="font-weight:500; color:#0e4d5e;"><i class="fas fa-info-circle" style="color:#47d7ac;"></i> Все пакеты обсуждаются индивидуально. Возможна адаптация под ваши задачи.</p>
-            </div>
-        </section>
-
-        <!-- ==================== VIBE-CODING ==================== -->
-        <section class="page" id="page-vibecoding">
-            <h2 class="page-title">Вайб-кодинг (AI + создание сайтов)</h2>
-            <p style="font-size:1.05rem; color:#2c4253; margin-bottom:8px; max-width:800px;">
-                <strong>Создаю сайты с помощью искусственного интеллекта</strong> — быстро, качественно и без сложного кода. Вы получаете готовый сайт-визитку, лендинг или корпоративный сайт за <strong>1–3 дня</strong>.
-            </p>
-            <p style="color:#5b7c8c; margin-bottom:32px; font-size:0.95rem;">
-                <i class="fas fa-robot" style="color:#47d7ac;"></i> AI помогает генерировать контент, структуру и дизайн. Вы платите только за результат.
-            </p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:24px;">
-                <div class="vibe-card">
-                    <span class="level-badge">🚀 AI + готовый шаблон</span>
-                    <h4><i class="fas fa-id-card" style="color:#47d7ac;"></i> Сайт-визитка за 1 день</h4>
-                    <p>Одностраничный сайт с вашим брендом, услугами и контактами. Идеально для частных специалистов.</p>
-                    <div style="margin-top:8px;"><span class="skill-tag">AI-дизайн</span><span class="skill-tag">Адаптив</span><span class="skill-tag">SEO-база</span></div>
-                    <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Хочу%20заказать%20сайт-визитку%20на%20AI.%20Расскажите%20подробнее.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________" target="_blank" style="display:inline-block; margin-top:12px; color:#124c64; font-weight:600; text-decoration:none;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Заказать такой же →</a>
-                </div>
-                <div class="vibe-card">
-                    <span class="level-badge">🚀 AI + продажи</span>
-                    <h4><i class="fas fa-bullhorn" style="color:#47d7ac;"></i> Лендинг для услуги</h4>
-                    <p>Продающая страница для одной услуги. AI помогает написать цепляющие тексты и подобрать структуру.</p>
-                    <div style="margin-top:8px;"><span class="skill-tag">AI-копирайтинг</span><span class="skill-tag">Формы захвата</span></div>
-                    <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Хочу%20заказать%20лендинг%20на%20AI.%20Расскажите%20подробнее.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________" target="_blank" style="display:inline-block; margin-top:12px; color:#124c64; font-weight:600; text-decoration:none;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Заказать такой же →</a>
-                </div>
-                <div class="vibe-card">
-                    <span class="level-badge">🚀 AI + структура</span>
-                    <h4><i class="fas fa-building" style="color:#47d7ac;"></i> Корпоративный сайт</h4>
-                    <p>Многостраничный сайт для компании: описание, услуги, команда, новости. AI генерирует контент.</p>
-                    <div style="margin-top:8px;"><span class="skill-tag">Многостраничный</span><span class="skill-tag">AI-контент</span></div>
-                    <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Хочу%20заказать%20корпоративный%20сайт%20на%20AI.%20Расскажите%20подробнее.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________" target="_blank" style="display:inline-block; margin-top:12px; color:#124c64; font-weight:600; text-decoration:none;"><i class="fab fa-whatsapp" style="color:#25D366;"></i> Заказать такой же →</a>
-                </div>
-            </div>
-            <div style="margin-top:32px; background:#e1f2ee; border-radius:24px; padding:24px; border-left:6px solid #47d7ac; text-align:center;">
-                <p style="font-weight:500; color:#0e4d5e; font-size:1.1rem;">
-                    <i class="fas fa-rocket" style="color:#47d7ac;"></i>
-                    Хотите сайт, как у меня? <strong>Напишите в WhatsApp</strong> — я сделаю вам такой же за 1–3 дня с помощью AI.
-                </p>
-                <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Хочу%20заказать%20сайт%20у%20вас.%20Расскажите%20подробнее.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________%0AТип%20сайта%3A%20________" target="_blank" class="btn-whatsapp" style="margin-top:16px; padding:12px 36px; font-size:1rem;">
-                    <i class="fab fa-whatsapp"></i> Связаться
-                </a>
-            </div>
-        </section>
-
-        <!-- ==================== CONTACT ==================== -->
-        <section class="page" id="page-contact">
-            <h2 class="page-title">Контакты</h2>
-            <div class="contact-card">
-                <div style="font-size:3.5rem; color:#25D366; margin-bottom:16px;"><i class="fab fa-whatsapp"></i></div>
-                <h3 style="color:#0e3b4b; font-size:1.4rem;">Свяжитесь со мной</h3>
-                <p style="color:#2c4253; margin:12px 0 8px;">Единственный способ связи — WhatsApp. Нажмите на кнопку, чтобы написать.</p>
-                <p style="color:#0e4d5e; font-weight:600; margin-bottom:20px;">
-                    <i class="far fa-clock"></i> 🕐 Отвечаю с 9:00 до 18:00 в будни
-                </p>
-                <div class="whatsapp-hint" style="text-align:left;">
-                    <i class="fas fa-info-circle"></i> <strong>Шаблон обращения:</strong><br>
-                    «Здравствуйте, Сауле! Меня интересует сотрудничество. Расскажите подробнее о ваших услугах.<br><br>
-                    ФИО: ________<br>
-                    Номер телефона: ________»
-                </div>
-                <a href="https://wa.me/77777717707?text=Здравствуйте%2C%20Сауле!%20Меня%20интересует%20сотрудничество.%20Расскажите%20подробнее%20о%20ваших%20услугах.%20%0A%0AФИО%3A%20________%0AТелефон%3A%20________" target="_blank" class="btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> Написать в WhatsApp
-                </a>
-            </div>
-        </section>
-
+      <!-- Stats block -->
+      <div style="flex:1; background:linear-gradient(135deg,#124c64,#0b2b3b); border-radius:28px; padding:32px 24px; color:#fff; text-align:center;">
+        <div><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">17+</span><br><span style="font-size:0.9rem; opacity:0.8;">лет в фармацевтике</span></div>
+        <div style="margin:20px 0;"><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">5+</span><br><span style="font-size:0.9rem; opacity:0.8;">клинических исследований</span></div>
+        <div><span style="font-size:2.5rem; font-weight:800; color:#ffdd99;">120+</span><br><span style="font-size:0.9rem; opacity:0.8;">сотрудников в управлении</span></div>
+      </div>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p style="font-weight:600;">Сауле Ахмет</p>
-            <p style="font-size:0.85rem; opacity:0.8;">Эксперт по GMP, цифровизации и вайб-кодингу</p>
-            <p style="font-size:0.8rem; opacity:0.6; margin-top:8px;">
-                <i class="fab fa-whatsapp" style="color:#25D366;"></i> Связь через WhatsApp
-            </p>
+    <!-- Achievement highlights -->
+    <div class="achievement-grid">
+      <div class="achievement-item">
+        <div class="number">7%</div>
+        <div class="label">снижение брака пленки</div>
+      </div>
+      <div class="achievement-item">
+        <div class="number">2ч → 3мин</div>
+        <div class="label">расчёт сырья (Excel-автоматизация)</div>
+      </div>
+      <div class="achievement-item">
+        <div class="number">15–20%</div>
+        <div class="label">экономия времени руководителя</div>
+      </div>
+      <div class="achievement-item">
+        <div class="number">100%</div>
+        <div class="label">прослеживаемость СОП</div>
+      </div>
+    </div>
+
+    <!-- 4 core competencies -->
+    <div class="grid-2col">
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Проактивное управление качеством</h3>
+        <p>Непрерывная верификация процессов, CAPA, управление рисками, предупреждение отклонений.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+        <h3>Цифровизация & IT-решения</h3>
+        <p>Bitrix24, голосовые боты (Twin), оцифровка QC/QA, автоматизация рутины.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-flask"></i></div>
+        <h3>GMP • СОП • Регистрация</h3>
+        <p>Разработка СОП по GMP, сопровождение клинических исследований, актуализация НПА.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-magic"></i></div>
+        <h3>Вайб-кодинг</h3>
+        <p>Быстрое прототипирование, low-code/no-code, промпт-инжиниринг, скрипты для автоматизации.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EXPERIENCE ==================== -->
+  <section class="page" id="page-experience">
+    <h2 class="page-title">Опыт работы</h2>
+
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-company">ТОО «PHARMA TECH STANDART» (PTS)</span><span class="exp-period">2026 — н.в.</span></div>
+      <div class="exp-role">Директор ТОО</div>
+      <ul class="exp-desc"><li>Импорт средств гигиены под казахстанским брендом, разработка спецификации OEM производства.</li></ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-company">ТОО «GSG Pharma Corporation» (концентраты для гемодиализа)</span><span class="exp-period">авг 2024 — янв 2026</span></div>
+      <div class="exp-role">Заместитель генерального директора по качеству (ПРК)</div>
+      <ul class="exp-desc">
+        <li>Узаконила деятельность: исправление ошибок в лицензиях.</li>
+        <li>Легализовала продукт: актуализация СТ и РУ на МИ.</li>
+        <li>Оцифровала процессы: создание калькулятора расхода сырья.</li>
+        <li>Создала систему мониторинга сырья.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-company">ТОО «Dolce» (Медицинские изделия, штат 400)</span><span class="exp-period">июль 2021 — март 2023</span></div>
+      <div class="exp-role">Исполнительный директор</div>
+      <ul class="exp-desc">
+        <li>Организация бесперебойной работы всех участков производства.</li>
+        <li>Внедрение элементов GMP в ISO 13485:2016.</li>
+        <li>Аудит новых проектов до DQ, управление CAPA.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-company">ТОО «НУР-МАЙ ФАРМАЦИЯ» (инфузионные/инъекционные растворы, 120 чел)</span><span class="exp-period">2011 — 2021</span></div>
+      <div class="exp-role">Заместитель по производству / Заместитель по качеству</div>
+      <ul class="exp-desc">
+        <li>Снижение брака пленки на 7% за счёт оптимизации линии Plumat.</li>
+        <li>Оцифровка лабораторных данных (Excel-дашборды с ретроспективным анализом).</li>
+        <li>Хронометраж сотрудников QA/QC, пересмотр ДИ.</li>
+        <li>Разработка универсальных СОП под стандарты РК.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header"><span class="exp-company">ТОО «НУР-МАЙ ФАРМ» (директор завода)</span><span class="exp-period">2009 — 2011</span></div>
+      <div class="exp-role">Директор завода</div>
+      <ul class="exp-desc"><li>Полное управление производственным циклом, запуск новых линий.</li></ul>
+    </div>
+
+    <div style="margin-top:24px; display:flex; flex-wrap:wrap; gap:10px;">
+      <span class="skill-tag">🏆 Снижение брака пленки 7%</span>
+      <span class="skill-tag">📊 Оцифровка исторических данных</span>
+      <span class="skill-tag">🤖 Чат-боты для сотрудников</span>
+      <span class="skill-tag">📈 Автосводка KPI</span>
+    </div>
+  </section>
+
+  <!-- ==================== VIBE-CODING ==================== -->
+  <section class="page" id="page-vibecoding">
+    <h2 class="page-title">Примеры вайб-кодинга</h2>
+    <p style="font-size:1.05rem; color:#2c4253; margin-bottom:32px; max-width:800px;">
+      <strong>Вайб-кодинг</strong> — быстрое прототипирование через интуитивные скрипты, low-code/no-code и промпт-инжиниринг. Мои реальные кейсы:
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:24px;">
+      <div class="vibe-card">
+        <h4><i class="fas fa-calculator" style="color:#47d7ac;"></i> Калькулятор расхода сырья</h4>
+        <p>Excel + макросы — расчёт потребности в сырье с 2 часов до 3 минут. Исключены ошибки.</p>
+        <div style="margin-top:8px;"><span class="skill-tag">Excel VBA</span><span class="skill-tag">Автоматизация</span></div>
+      </div>
+      <div class="vibe-card">
+        <h4><i class="fas fa-chart-pie" style="color:#47d7ac;"></i> Дашборд лабораторных данных</h4>
+        <p>Power Query + Excel: ретроспективный анализ испытаний за 3 года «в один клик».</p>
+        <div style="margin-top:8px;"><span class="skill-tag">Power Query</span><span class="skill-tag">Дашборды</span></div>
+      </div>
+      <div class="vibe-card">
+        <h4><i class="fas fa-robot" style="color:#47d7ac;"></i> Чат-бот для сотрудников</h4>
+        <p>Twin + Bitrix24: голосовой бот отвечает на вопросы по СОП, графику, контактам. Экономия времени руководителя на 15–20%.</p>
+        <div style="margin-top:8px;"><span class="skill-tag">Twin</span><span class="skill-tag">Bitrix24</span><span class="skill-tag">NLU</span></div>
+      </div>
+      <div class="vibe-card">
+        <h4><i class="fas fa-file-signature" style="color:#47d7ac;"></i> Трекер регистрационных удостоверений</h4>
+        <p>Bitrix24 с автоподсказками за 90/60/30 дней до истечения срока. Исключены риски просрочек.</p>
+        <div style="margin-top:8px;"><span class="skill-tag">Bitrix24</span><span class="skill-tag">CRM</span></div>
+      </div>
+      <div class="vibe-card">
+        <h4><i class="fas fa-folder-tree" style="color:#47d7ac;"></i> Сетевая система версий СОП</h4>
+        <p>Структура папок «Действующие», «Архив», «На согласовании». Все используют актуальные документы.</p>
+        <div style="margin-top:8px;"><span class="skill-tag">Документооборот</span><span class="skill-tag">СОП</span></div>
+      </div>
+      <div class="vibe-card">
+        <h4><i class="fas fa-chart-bar" style="color:#47d7ac;"></i> Автосводка KPI</h4>
+        <p>Google Sheets + скрипт: ежедневный сбор данных по браку, простоям, плану. Отправка в Telegram через webhook.</p>
+        <div style="margin-top:8px;"><span class="skill-tag">Google Script</span><span class="skill-tag">Telegram API</span></div>
+      </div>
+    </div>
+    <div style="margin-top:32px; background:#e1f2ee; border-radius:24px; padding:24px; border-left:6px solid #47d7ac;">
+      <p style="font-weight:500; color:#0e4d5e;">
+        <i class="fas fa-music" style="color:#47d7ac;"></i> Мой подход: «кодинг под вибрацию бизнеса» — создаю решения, которые чувствуют контекст, легко адаптируются и приносят пользу без лишней бюрократии.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section class="page" id="page-skills">
+    <h2 class="page-title">Компетенции & Образование</h2>
+    <div class="grid-2col">
+      <div>
+        <h3 style="color:#0e3b4b; margin-bottom:16px;"><i class="fas fa-graduation-cap" style="color:#47d7ac;"></i> Образование</h3>
+        <div class="card">
+          <p><strong>Провизор-аналитик</strong><br>КазНМУ им. С.Д. Асфендиярова, 1992</p>
+          <hr style="margin:12px 0; border-color:#e9f0f4;">
+          <p><strong>Ключевые сертификаты:</strong></p>
+          <ul style="padding-left:20px; color:#2c4253; font-size:0.95rem;">
+            <li>Лицензия №KZ25000751715 (ЛС и МИ, 2025)</li>
+            <li>Лицензия №KZ25000384682 (ВШОЗ, 2025)</li>
+            <li>Сертификат партнера Bitrix24.KZ (2024)</li>
+            <li>Twin (РФ) — разработка голосовых ботов (2022)</li>
+            <li>TUV AUSTRIA Management Program (2015)</li>
+            <li>Первый МГМУ им. Сеченова (2014)</li>
+          </ul>
         </div>
-    </footer>
+      </div>
+      <div>
+        <h3 style="color:#0e3b4b; margin-bottom:16px;"><i class="fas fa-microchip" style="color:#47d7ac;"></i> Цифровые навыки</h3>
+        <div class="card">
+          <p><strong>Платформы & инструменты:</strong></p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+            <span class="skill-tag">Bitrix24</span>
+            <span class="skill-tag">Twin</span>
+            <span class="skill-tag">Excel (продвинутый)</span>
+            <span class="skill-tag">Power Query</span>
+            <span class="skill-tag">Google Apps Script</span>
+            <span class="skill-tag">NLU</span>
+            <span class="skill-tag">Промпт-инжиниринг</span>
+            <span class="skill-tag">Python (скетчи)</span>
+          </div>
+          <hr style="margin:16px 0; border-color:#e9f0f4;">
+          <p><strong>Стажировки:</strong> Kolpitt (Голландия), Bausch (Швейцария), Plumat (Германия), Shijiazhuang No.4 (Китай).</p>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <p><strong>Языки:</strong> Русский — свободно, Казахский — свободно, Английский — технический.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:32px; background:#e1f2ee; border-radius:24px; padding:24px; border-left:6px solid #47d7ac;">
+      <p style="font-weight:500; color:#0e4d5e;">
+        <i class="fas fa-quote-left" style="color:#47d7ac; margin-right:8px;"></i>
+        Моя философия: создание прослеживаемой системы мониторинга сырья и процессов, где каждое отклонение предупреждается до его возникновения.
+      </p>
+    </div>
+  </section>
 
-    <script>
-        const navLinks = document.querySelectorAll('.nav a');
-        const pages = {
-            home: document.getElementById('page-home'),
-            experience: document.getElementById('page-experience'),
-            packages: document.getElementById('page-packages'),
-            vibecoding: document.getElementById('page-vibecoding'),
-            contact: document.getElementById('page-contact')
-        };
+  <!-- ==================== CONTACT ==================== -->
+  <section class="page" id="page-contact">
+    <h2 class="page-title">Контакты</h2>
+    <div class="contact-card">
+      <div style="font-size:3.5rem; color:#25D366; margin-bottom:16px;">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h3 style="color:#0e3b4b; font-size:1.4rem;">Свяжитесь со мной</h3>
+      <p style="color:#2c4253; margin:12px 0 8px;">Предпочтительный способ связи — WhatsApp. Отвечаю оперативно.</p>
+      <p style="color:#0e4d5e; font-weight:600; margin-bottom:20px;">
+        <i class="far fa-clock"></i> 🕐 Отвечаю с 8:00 до 20:00
+      </p>
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pageName = this.dataset.page;
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                Object.values(pages).forEach(p => p.classList.remove('active'));
-                if (pages[pageName]) pages[pageName].classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
+      <div class="auto-message-preview" style="text-align:left; background:#f0f9f5;">
+        <strong><i class="fas fa-comment-dots"></i> Автоматическое сообщение:</strong><br>
+        «Здравствуйте! Благодарю за отклик, опишите сферу деятельности (ЛС, МИ) Стерильное / нестерильное. На какую позицию Вам необходим специалист? Наберу в течение часа. Сауле.»
+      </div>
 
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg;
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 2500);
-        }
-    </script>
+      <a href="https://wa.me/77777717707?text=Здравствуйте!%20Благодарю%20за%20отклик%2C%20опишите%20сферу%20деятельности%20(ЛС%2C%20МИ)%20Стерильное%20%2F%20нестерильное.%20На%20какую%20позицию%20Вам%20необходим%20специалист%3F%20Наберу%20в%20течение%20часа.%20Сауле." target="_blank" class="btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> Написать в WhatsApp
+      </a>
+      <div style="margin-top:20px;">
+        <button class="btn-outline" id="copyPhoneBtn2"><i class="fas fa-phone-alt"></i> Сохранить номер</button>
+      </div>
+
+      <!-- Ссылка на сайт в контактах -->
+      <div class="site-link-box" style="margin-top:20px;">
+        <i class="fas fa-globe"></i>
+        <span>Онлайн-резюме:</span>
+        <a href="https://akhmetsaule4-cell.github.io/sauleaudit/" target="_blank">
+          akhmetsaule4-cell.github.io/sauleaudit/
+        </a>
+      </div>
+
+      <p style="margin-top:20px; font-size:0.9rem; color:#5b7c8c;">
+        <i class="fas fa-map-marker-alt"></i> Алматы, Казахстан
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p style="font-weight:600;">Сауле Ахмет</p>
+    <p style="font-size:0.85rem; opacity:0.8;">Эксперт по GMP, цифровизации и вайб-кодингу</p>
+    <p style="font-size:0.8rem; opacity:0.6; margin-top:8px;">
+      <i class="fab fa-whatsapp" style="color:#25D366;"></i> Связь через WhatsApp
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  // ===== NAVIGATION =====
+  const navLinks = document.querySelectorAll('.nav a:not(.pdf-btn)');
+  const pages = {
+    home: document.getElementById('page-home'),
+    experience: document.getElementById('page-experience'),
+    vibecoding: document.getElementById('page-vibecoding'),
+    skills: document.getElementById('page-skills'),
+    contact: document.getElementById('page-contact')
+  };
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const pageName = this.dataset.page;
+      navLinks.forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+      Object.values(pages).forEach(p => p.classList.remove('active'));
+      if (pages[pageName]) pages[pageName].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ===== TOAST =====
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // ===== COPY PHONE =====
+  function copyPhone() {
+    navigator.clipboard.writeText('+7 777 7717707').then(() => {
+      showToast('📱 Номер сохранён: +7 777 771 77 07');
+    }).catch(() => showToast('⚠️ Не удалось скопировать'));
+  }
+  document.getElementById('copyPhoneBtn').addEventListener('click', copyPhone);
+  document.getElementById('copyPhoneBtn2').addEventListener('click', copyPhone);
+
+  // ===== PDF GENERATION =====
+  document.getElementById('pdfDownloadBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const btn = this;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Генерация...';
+    btn.style.opacity = '0.6';
+
+    const element = document.querySelector('.container');
+    const allPages = document.querySelectorAll('.page');
+    const hiddenPages = [];
+
+    allPages.forEach(p => {
+      if (!p.classList.contains('active')) {
+        hiddenPages.push(p);
+        p.style.display = 'block';
+        p.style.opacity = '1';
+        p.style.animation = 'none';
+      }
+    });
+
+    const opt = {
+      margin:        [0.5, 0.5, 0.5, 0.5],
+      filename:     'Сауле_Ахмет_Резюме.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, letterRendering: true, useCORS: true },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      hiddenPages.forEach(p => {
+        p.style.display = '';
+        p.style.opacity = '';
+        p.style.animation = '';
+      });
+      btn.innerHTML = originalText;
+      btn.style.opacity = '1';
+    }).catch(() => {
+      hiddenPages.forEach(p => {
+        p.style.display = '';
+        p.style.opacity = '';
+        p.style.animation = '';
+      });
+      btn.innerHTML = originalText;
+      btn.style.opacity = '1';
+      showToast('⚠️ Ошибка при создании PDF');
+    });
+  });
+</script>
 </body>
 </html>
